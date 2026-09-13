@@ -1,0 +1,44 @@
+# Deps
+node_modules/
+.pnp/
+.pnp.*
+
+# Build outputs
+dist/
+build/
+out/
+.next/
+.turbo/
+coverage/
+*.tsbuildinfo
+
+# pnpm
+pnpm-store/
+.pnpm-store/
+
+# Env (never commit secrets)
+.env
+.env.*
+!.env.example
+
+# OS / Editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json
+*.swp
+*.swo
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# Supabase
+supabase/.branches/
+supabase/.temp/
+
+# Cloudflare / Wrangler
+.wrangler/
+.dev.vars
