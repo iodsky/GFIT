@@ -2,3 +2,12 @@ packages:
   - 'frontend'
   - 'backend'
   - 'packages/*'
+allowBuilds:
+  esbuild: true
+minimumReleaseAgeExclude:
+  - '@supabase/auth-js@2.117.2'
+  - '@supabase/functions-js@2.117.2'
+  - '@supabase/postgrest-js@2.117.2'
+  - '@supabase/realtime-js@2.117.2'
+  - '@supabase/storage-js@2.117.2'
+  - '@supabase/supabase-js@2.117.2'
