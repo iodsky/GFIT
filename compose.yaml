@@ -1,0 +1,47 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+      target: development
+    init: true
+    env_file:
+      - path: ./backend/.env
+        required: false
+    environment:
+      NODE_ENV: development
+      PORT: '3000'
+    ports:
+      - '3000:3000'
+    extra_hosts:
+      - 'host.docker.internal:host-gateway'
+    volumes:
+      - type: bind
+        source: ./backend
+        target: /workspace/backend
+      - type: bind
+        source: ./packages
+        target: /workspace/packages
+      - type: bind
+        source: ./tsconfig.base.json
+        target: /workspace/tsconfig.base.json
+        read_only: true
+      - type: volume
+        source: backend_node_modules
+        target: /workspace/backend/node_modules
+    healthcheck:
+      test:
+        - CMD
+        - node
+        - -e
+        - >-
+          fetch('http://127.0.0.1:3000/health')
+          .then((response) => process.exit(response.ok ? 0 : 1))
+          .catch(() => process.exit(1))
+      interval: 10s
+      timeout: 3s
+      retries: 5
+      start_period: 20s
+
+volumes:
+  backend_node_modules:

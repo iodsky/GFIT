@@ -38,6 +38,10 @@ Workspace membership is defined in `pnpm-workspace.yaml`
 (`frontend`, `backend`, `packages/*`). `supabase/` holds migrations/config,
 not Node packages, so it is intentionally excluded.
 
+## Local Development
+
+Follow the [local development runbook](docs/runbooks/local-development.md) to run the backend with Docker Compose and the separate Supabase CLI stack.
+
 ## Status
 
 - [x] Monorepo wiring (workspace globs, root `package.json`, base configs)
