@@ -1,6 +1,6 @@
 # Local Backend Runbook
 
-This runbook covers the currently available Hono backend workflow. Database setup and Docker image execution are not verified and are intentionally out of scope here.
+This runbook covers the Hono backend commands. For the containerized backend and separate Supabase local stack, see the [local development runbook](local-development.md).
 
 ## Requirements
 
@@ -34,7 +34,7 @@ The example lists:
 - `CORS_ALLOWED_ORIGIN` — `http://localhost:5173` in the example.
 - `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` — blank in the example and optional for the current backend scaffold. If configured, provide both together.
 
-The current backend does not connect to a database. Supabase/Drizzle setup, migrations, and seed data are pending; do not run database setup commands from this runbook.
+The current backend has no application-specific database queries or domain tables. Supabase CLI and Drizzle wiring are available; the schema currently contains only a non-domain wiring probe.
 
 ## Run Locally
 
@@ -67,6 +67,6 @@ The build emits JavaScript under `backend/dist/`.
 - `supabase/` is not a Node workspace. Do not add it to `pnpm-workspace.yaml`.
 - Keep secrets out of source control and frontend code; use `.env.example` as the tracked environment template.
 
-## Docker Status
+## Docker
 
-`backend/Dockerfile` has not been verified by an image build because the Docker engine was unavailable. Image build/run commands are omitted until Docker verification succeeds.
+The backend Dockerfile is used by the Compose workflow documented in [Local Development](local-development.md). Supabase itself is started and stopped separately through its CLI.

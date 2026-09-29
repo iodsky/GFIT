@@ -1,0 +1,1 @@
+ALTER TABLE "drizzle_wiring_probe" ADD COLUMN "probe_value" text;
